@@ -19,3 +19,9 @@ Returns the sum on given numbers.
 - sum(2,3) returns 5
 - sum(-2,-4) returns -6
 - sum(-2,4) returns 2
+  [2, -4, -2],
+  [0, 0, 0],
+  [0, 3, 3],
+  [3, 0, 3],
+  [0,- 3, -3],
+  [-3, 0, -3]

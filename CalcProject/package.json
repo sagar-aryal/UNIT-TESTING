@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "__tests__"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "description": "calcproject test",
   "devDependencies": {
     "jest": "^27.0.6"
-  }
+  },
+  "dependencies": {},
+  "keywords": []
 }
