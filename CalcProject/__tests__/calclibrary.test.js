@@ -1,6 +1,6 @@
 "use strict";
 
-const { sum, subtract } = require("../calclibrary");
+const { sum, subtract, divide } = require("../calclibrary");
 
 describe("Test sum with integers", () => {
   test("test 1+1=2", () => {
@@ -165,5 +165,19 @@ describe("Testing parameters are not numbers", () => {
   ];
   test.each(testValues)("subtract(%s, %s) throws %s", (a, b, expected) => {
     expect(() => subtract(a, b)).toThrow(expected);
+  });
+});
+
+///////// DIVISION /////////
+
+describe("Testing division", () => {
+  const testValues = [
+    [0, 0, Number.NaN],
+    [2, 0, Number.POSITIVE_INFINITY],
+    [-2, 0, Number.NEGATIVE_INFINITY],
+    [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.NaN],
+  ];
+  test.each(testValues)("divide(%s, %s)=%s", (a, b, expected) => {
+    expect(divide(a, b)).toBe(expected);
   });
 });

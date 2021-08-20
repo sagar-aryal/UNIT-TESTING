@@ -112,3 +112,24 @@ Returns the differences on given numbers.
 - subtract('', '') throws an expection `'only numbers are allowed'`
 - subtract(null, 1) throws an expection `'parameter missing'`
 - subtract(undefined, 1) throws an expection `'parameter missing'`
+
+## division
+
+function divide(a, b), return a/b.
+
+- problems:
+
+0/0 => NAN
+2/0 => Infinity
+-2/0 => -Infinity
+Infinity/Infinity => NaN
+-Infinity/Infinity => NaN
+Infinity/-Infinity => NaN
+-Infinity/-Infinity => NaN
+
+- Test values:
+
+  [0, 0, Number.NaN],
+  [2, 0, Number.POSITIVE_INFINITY],
+  [-2, 0, Number.NEGATIVE_INFINITY],
+  [Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.NaN]
