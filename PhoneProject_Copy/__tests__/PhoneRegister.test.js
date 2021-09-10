@@ -206,7 +206,7 @@ describe("Testing getAllNumbers", () => {
   });
 });
 
-describe("Testing getNamee", () => {
+describe("Testing getName", () => {
   const phoneRegister = new PhoneRegister(phones);
 
   test('get name of the number "12345678"', () => {
