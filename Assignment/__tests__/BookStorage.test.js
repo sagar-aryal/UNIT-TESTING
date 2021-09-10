@@ -48,3 +48,23 @@ describe("Testing getById(id)", () => {
     });
   });
 });
+
+describe("Testing getAllIdsByName(value)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get from default jsonData with parameters NoSql - New Hope", () => {
+    expect(bookStorage.getAllIdsByName("NoSql - New Hope")).toEqual([1]);
+  });
+
+  test("get from default jsonData with parameters Hacking databases", () => {
+    expect(bookStorage.getAllIdsByName("Hacking databases")).toEqual([3]);
+  });
+
+  test("wroung name returns an empty array", () => {
+    expect(bookStorage.getAllIdsByName("Unit Testing with Jest")).toEqual([]);
+  });
+
+  test("missing parameter returns an empty array", () => {
+    expect(bookStorage.getAllIdsByName()).toEqual([]);
+  });
+});

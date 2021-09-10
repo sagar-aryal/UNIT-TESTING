@@ -17,4 +17,14 @@ module.exports = class BookStorage {
     }
     return null;
   }
+
+  getAllIdsByName(value) {
+    const found = [];
+    for (let book of this.bookStorage) {
+      if (book.name === value) {
+        found.push(book.id);
+      }
+    }
+    return found;
+  }
 };
