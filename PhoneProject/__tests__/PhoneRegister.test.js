@@ -3,7 +3,7 @@
 const PhoneRegister = require("../PhoneRegister");
 const phones = require("../phones.json");
 
-describe("Testing constructor", () => {
+describe("constructor", () => {
   test("object created", () => {
     const phoneRegister = new PhoneRegister(phones);
     expect(phoneRegister.phoneRegister).toEqual(phones);
@@ -45,10 +45,7 @@ describe("Testing getTypes", () => {
 });
 
 describe("Testing getNumbersByType", () => {
-  let phoneRegister;
-  beforeEach(() => {
-    phoneRegister = new PhoneRegister(phones);
-  });
+  const phoneRegister = new PhoneRegister(phones);
 
   test("get from default jsonData with parameters Leila, Hökki, work", () => {
     expect(phoneRegister.getNumbersByType("Leila", "Hökki", "work")).toEqual([
@@ -83,58 +80,72 @@ describe("Testing getNumbersByType", () => {
 
 describe("missing parameter throws an exception", () => {
   test("one parameter missing", () => {
-    expect(() => phoneRegister.getNumbersByType("Leila", "Hökki")).toEqual();
+    expect(() => phoneRegister.getNumbersByType("Leila", "Hökki")).toThrow(
+      "missing parameter"
+    );
   });
 
   test("one parameter missing", () => {
-    expect(() => phoneRegister.getNumbersByType("Leila", "Hökki")).toEqual();
+    expect(() => phoneRegister.getNumbersByType("Leila")).oThrow(
+      "missing parameter"
+    );
   });
 
   test("one parameter missing", () => {
-    expect(() => phoneRegister.getNumbersByType("Leila", "Hökki")).toEqual();
+    expect(() => phoneRegister.getNumbersByType()).oThrow("missing parameter");
   });
 });
 
-describe(" ", () => {
+describe(" Testing getAllNumbersByType", () => {
+  const phoneRegister = new PhoneRegister();
   test("get all work numbers", () => {
-    const exceptedResult = [
+    const expectedResult = [
       {
         firstname: "Leila",
         lastname: "Hökki",
-        phones: [
-          {
-            type: "home",
-            number: "12345678",
-          },
-          {
-            type: "work",
-            number: "87654321",
-          },
-          {
-            type: "work",
-            number: "19283654",
-          },
-        ],
+        number: {
+          type: "work",
+          tel: "87654321",
+        },
+      },
+      {
+        firstname: "Leila",
+        lastname: "Hökki",
+        number: {
+          type: "work",
+          tel: "19283654",
+        },
       },
       {
         firstname: "Matt",
         lastname: "River",
-        phones: [
-          {
-            type: "home",
-            number: "453735442",
-          },
-          {
-            type: "mobile",
-            number: "3486543422",
-          },
-          {
-            type: "work",
-            number: "9537288353",
-          },
-        ],
+        number: {
+          type: "work",
+          tel: "9537288353",
+        },
       },
     ];
-    expect(phoneRegister.getAllNumbersByType("work"));
+    expect(phoneRegister.getAllNumbersByType("work")).toEqual(expectedResult);
+  });
+
+  test("get all mobile numbers", () => {
+    expect(phoneRegister.getAllNumbersByType("mobile")).toEqual([
+      {
+        firstname: "Matt",
+        lastname: "River",
+        number: {
+          type: "mobile",
+          tel: "3486543422",
+        },
+      },
+    ]);
+  });
+
+  test('type "x" will return an empty array []', () => {
+    expect(phoneRegister.getAllNumbersByType("x")).toEqual([]);
+  });
+
+  test("missing parameter throws an exception", () => {
+    expect(phoneRegister.getAllNumbersByType()).toEqual("missing parameter");
   });
 });

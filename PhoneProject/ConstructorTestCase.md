@@ -2,7 +2,7 @@
 
 ## **constructor(data)**
 
-Phones json array is passed as a parameter `data`. If the parameter is missing, throws an exeception ` phone data missing`.
+Phones json array is passed as a parameter `data`. If the parameter is missing, throws an exeception `phone data missing`.
 
 ### Test 1: object created
 
