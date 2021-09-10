@@ -207,3 +207,39 @@ describe("Testing getAllBookAuthors()", () => {
     expect(bookStorage.getAllBookAuthors()).toEqual([]);
   });
 });
+
+describe("Testing getAllBooksByAuthor(author)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get book objects of author Antony Lee", () => {
+    expect(bookStorage.getAllBooksByAuthor("Antony Lee")).toEqual([
+      {
+        id: 2,
+        name: "Databases - The rise and fall",
+        author: "Antony Lee",
+        topics: ["data storages", "sql", "noSql"],
+        price: 45,
+        extras: [
+          {
+            name: "signed by author",
+            price: 80,
+          },
+          {
+            name: "dvd",
+            price: 65,
+          },
+        ],
+      },
+    ]);
+  });
+
+  test("wroung name returns an empty array", () => {
+    expect(bookStorage.getAllBooksByAuthor("Helil")).toEqual([]);
+  });
+
+  test("missing parameter throws an exception 'missing parameter'", () => {
+    expect(() => bookStorage.getAllBooksByAuthor()).toThrow(
+      "missing parameter"
+    );
+  });
+});
