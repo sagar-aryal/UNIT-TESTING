@@ -1,4 +1,4 @@
-# Unit-testing-and-quality-assurance
+# UNIT-TESTING-WITH-JEST
 
 ## Description
 
