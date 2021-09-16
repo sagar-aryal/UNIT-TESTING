@@ -68,4 +68,13 @@ module.exports = class BookStorage {
     }
     return found;
   }
+
+  getPriceWithoutExtras(id) {
+    for (let book of this.bookStorage) {
+      if (book.id === id && book.topics.length > 0) {
+        return book.price;
+      }
+    }
+    throw new Error("nothing found with given id");
+  }
 };

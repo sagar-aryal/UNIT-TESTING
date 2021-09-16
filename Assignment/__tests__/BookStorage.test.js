@@ -287,3 +287,17 @@ describe("Testing getBookTopics(id)", () => {
     expect(bookStorage.getBookTopics()).toEqual([]);
   });
 });
+
+describe("Testing getPriceWithoutExtras(id)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get price of the book without the price of extras with an id of 1", () => {
+    expect(bookStorage.getPriceWithoutExtras(1)).toEqual(25);
+  });
+
+  test("if no book with the given number is found throws an exeption", () => {
+    expect(() => bookStorage.getPriceWithoutExtras(4)).toThrow(
+      "nothing found with given id"
+    );
+  });
+});
