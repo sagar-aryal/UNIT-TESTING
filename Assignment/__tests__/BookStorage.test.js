@@ -319,3 +319,21 @@ describe("Testing getTotalPrice(id)", () => {
     );
   });
 });
+
+describe("Testing getPriceOfTheExtras(id)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get total price of the book with an id of 1", () => {
+    expect(bookStorage.getPriceOfTheExtras(2)).toEqual(145);
+  });
+
+  test("get total price of the book with an id of 3", () => {
+    expect(bookStorage.getPriceOfTheExtras(3)).toEqual(0);
+  });
+
+  test("get total price of the book with wroung id of 5", () => {
+    expect(() => bookStorage.getPriceOfTheExtras(4)).toThrow(
+      "nothing found with given id"
+    );
+  });
+});
