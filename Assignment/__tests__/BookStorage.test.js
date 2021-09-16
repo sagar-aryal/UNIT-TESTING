@@ -243,3 +243,47 @@ describe("Testing getAllBooksByAuthor(author)", () => {
     );
   });
 });
+
+describe("Testing hasTopics(id)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("passing parameter id of book having topics", () => {
+    expect(bookStorage.hasTopics(1)).toEqual(true);
+  });
+
+  test("passing parameter id of book with no topics", () => {
+    expect(bookStorage.hasTopics(3)).toEqual(false);
+  });
+
+  test("missing parameter id of book", () => {
+    expect(bookStorage.hasTopics()).toEqual(false);
+  });
+});
+
+describe("Testing getBookTopics(id)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get from default jsonData with parameter id of 1", () => {
+    expect(bookStorage.getBookTopics(1)).toEqual([
+      "noSql",
+      "sql",
+      "future databases",
+    ]);
+  });
+
+  test("get from default jsonData with parameter id of 2", () => {
+    expect(bookStorage.getBookTopics(2)).toEqual([
+      "data storages",
+      "sql",
+      "noSql",
+    ]);
+  });
+
+  test(" wroung paramater throws an empty array", () => {
+    expect(bookStorage.getBookTopics(5)).toEqual([]);
+  });
+
+  test(" missing paramater throws an empty array", () => {
+    expect(bookStorage.getBookTopics()).toEqual([]);
+  });
+});

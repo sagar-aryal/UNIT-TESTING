@@ -48,4 +48,24 @@ module.exports = class BookStorage {
     }
     return found;
   }
+
+  hasTopics(id) {
+    if (!id) return false;
+    for (let book of this.bookStorage) {
+      if (book.id === id && book.topics.length > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getBookTopics(id) {
+    const found = [];
+    for (let book of this.bookStorage) {
+      if (book.id === id && book.topics.length > 0) {
+        return book.topics;
+      }
+    }
+    return found;
+  }
 };
