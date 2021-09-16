@@ -301,3 +301,21 @@ describe("Testing getPriceWithoutExtras(id)", () => {
     );
   });
 });
+
+describe("Testing getTotalPrice(id)", () => {
+  const bookStorage = new BookStorage(books);
+
+  test("get total price of the book with an id of 1", () => {
+    expect(bookStorage.getTotalPrice(1)).toEqual(70);
+  });
+
+  test("get total price of the book with an id of 3", () => {
+    expect(bookStorage.getTotalPrice(3)).toEqual(30);
+  });
+
+  test("get total price of the book with wroung id of 5", () => {
+    expect(() => bookStorage.getTotalPrice(5)).toThrow(
+      "nothing found with given id"
+    );
+  });
+});
