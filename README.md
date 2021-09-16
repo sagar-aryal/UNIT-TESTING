@@ -1,4 +1,4 @@
-# UNIT-TESTING-WITH-JEST
+# UNIT_TESTING
 
 ## Description
 
