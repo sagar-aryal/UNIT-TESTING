@@ -8,7 +8,7 @@ Method searches the datastorage for an object with given key. Key is unique.
 - Return: returns the book object matching the id or null if there is no match
 - if parameter is missing, throws an exception `'parameter missing'`
 
-### Test Case 1: get name and author of id "1"
+### Test Case 1: get book object of id 1
 
 Call
 
@@ -19,20 +19,26 @@ bookStorage.getById("1");
 returns
 
 ```json
-{ "name": "NoSql - New Hope", "author": "Layla Jones" }
+{
+  "id": 1,
+  "name": "NoSql - New Hope",
+  "author": "Layla Jones",
+  "topics": ["noSql", "sql", "future databases"],
+  "price": 25,
+  "extras": [
+    {
+      "name": "hard cover",
+      "price": 30
+    },
+    {
+      "name": "cd",
+      "price": 15
+    }
+  ]
+}
 ```
 
-### Test Case 2: get names and authors by id from default data
-
-```js
-const testValues = [
-  ["1", { name: "NoSql - New Hope", author: "Layla Jones" }],
-  ["2", { name: "Databases - The rise and fall", author: "Antony Lee" }],
-  ["3", { name: "Hacking databases", author: "Emily White" }],
-];
-```
-
-### Test Case 3: wrong id
+### Test Case 2: wrong id
 
 Call
 
@@ -42,7 +48,7 @@ bookStorage.getById("0");
 
 returns `null`.
 
-### Test Case 4. parameter missing
+### Test Case 3. parameter missing
 
 Call
 

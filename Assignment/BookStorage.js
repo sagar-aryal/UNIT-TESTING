@@ -9,10 +9,7 @@ module.exports = class BookStorage {
   getById(id) {
     for (let book of this.bookStorage) {
       if (book.id === id) {
-        return {
-          name: book.name,
-          author: book.author,
-        };
+        return book;
       }
     }
     return null;
@@ -31,8 +28,8 @@ module.exports = class BookStorage {
   getAllBookAuthors() {
     const found = [];
     for (let book of this.bookStorage) {
-      if (book.author && book.author.length > 0) {
-        found.push(book);
+      if (book.author && !found.includes(book.author)) {
+        found.push(book.author);
       }
     }
     return found;
@@ -82,9 +79,9 @@ module.exports = class BookStorage {
     let totalPrice = 0;
     for (let book of this.bookStorage) {
       if (book.id === id) {
-        totalPrice = totalPrice + book.price;
+        totalPrice += book.price;
         for (let extras of book.extras) {
-          totalPrice = totalPrice + extras.price;
+          totalPrice += extras.price;
         }
         return totalPrice;
       }
